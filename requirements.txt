@@ -1,0 +1,13 @@
+flask
+flask-restful
+flask-sqlalchemy
+flask-migrate
+flask-script
+werkzeug
+requests
+flask-api
+flask-bootstrap
+blueprint
+flask-wtf
+wtforms
+gunicorn
