@@ -7,7 +7,7 @@ from werkzeug.utils import redirect
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
-from test_navigator.test_navigator_utils import get_users, add_user
+from test_navigator.test_navigator_utils import get_users, add_user, get_users_remote
 
 bp = Blueprint('gui', __name__)
 
@@ -22,10 +22,11 @@ class AddUserForm(FlaskForm):
 def index():
     if request.method == 'GET':
         form = AddUserForm()
-        response = get_users()
+        # response = get_users()
+        response = get_users_remote()
 
         if response.status_code == HTTP_200_OK:
-            users = json.loads(response.data)
+            users = json.loads(response.content)
             if users is None:
                 return render_template('index.html', form=form)
 

@@ -24,6 +24,11 @@ def get_phrase():
     return get_hello_word() + ' ' + get_world_word()
 
 
+def get_users_remote():
+    response = requests.get('https://test-navigator-users.herokuapp.com/users')
+    return response
+
+
 def get_users():
     users = UserData.get_all()
     if not users:
