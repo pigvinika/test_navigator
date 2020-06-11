@@ -1,3 +1,11 @@
 language: python
+
 script:
   - python -m pytest -v
+
+deploy:
+    provider: heroku
+    api_key: 5ab0b31c-32f7-43fe-926c-97517372cb4e
+    app: test-navigator
+    on:
+        repo: pigvinika/test_navigator
