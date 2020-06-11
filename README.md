@@ -1,1 +1,1 @@
-# Test navigator
+# Test navigator (flask application)
