@@ -1,8 +1,11 @@
+import json
+
 import requests
 from flask import make_response, jsonify
 from flask_api.status import HTTP_404_NOT_FOUND, HTTP_500_INTERNAL_SERVER_ERROR, HTTP_200_OK
 from flask_restful import fields, marshal
 
+from config import Config
 from test_navigator.test_navigator_model import UserData
 
 user_fields = {'id': fields.Integer,
@@ -25,7 +28,13 @@ def get_phrase():
 
 
 def get_users_remote():
-    response = requests.get('https://test-navigator-users.herokuapp.com/users')
+    response = requests.get(Config.USERS_SEVICE_URL)
+    return response
+
+
+def add_user_remote(user_name):
+    data = {'name': str(user_name)}
+    response = requests.post(Config.USERS_SEVICE_URL, data=json.dumps(data))
     return response
 
 
